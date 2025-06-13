@@ -5,7 +5,7 @@ import Container from "@/components/Container.astro";
 import ArrowCard from "@/components/ArrowCard.astro";
 import Link from "@/components/Link.astro";
 import { dateRange } from "@/lib/utils";
-import { SITE, HOME } from "@/consts";
+import { SITE, HOME, SOCIALS } from "@/consts";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -33,7 +33,7 @@ const work = await Promise.all(
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        Welcome to Samuel's Website
+        Hello! I'm Samuel
       </div>
       
       <div class="animate space-y-4">
@@ -90,34 +90,59 @@ const work = await Promise.all(
       </section>
 
       <!-- Work Experience -->
-      <section class="animate space-y-4">
-        <div class="flex justify-between items-center">
-          <div class="font-semibold text-black dark:text-white">
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
             Work Experience
-          </div>
-          <Link href="/work" class="text-sm">
-            See all experience
+          </h5>
+          <Link href="/work">
+            See all work
           </Link>
         </div>
         <ul class="flex flex-col space-y-4">
           {work.map((entry) => (
-            <li class="grid grid-cols-[1fr,auto,1fr] gap-2 md:gap-4">
-              <div class="flex flex-col h-fit text-sm">
-                <div class="font-semibold text-black dark:text-white">
-                  {entry.data.company}
-                </div>
-                <div class="text-sm text-black/50 dark:text-white/50">
-                  {entry.data.role}
-                </div>
-              </div>
-              <div class="text-sm text-black/50 dark:text-white/50 min-w-fit text-center">
+            <li>
+              <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
               </div>
-              <div class="text-sm">
-                {entry.data.description}
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.company}
               </div>
+              <div class="text-sm opacity-75">
+                {entry.data.role}
+              </div>
+              <article>
+                <entry.Content />
+              </article>
             </li>
           ))}
+        </ul>
+      </section>
+
+      <!-- Connect -->
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Let's Connect
+        </h5>
+        <article>
+          <p>
+            I'm always open to discussing new opportunities, collaborating on interesting projects, or simply having a chat about frontend development and technology. Feel free to reach out through any of these channels.
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {SOCIALS.map(SOCIAL => (
+            <li class="flex gap-x-2 text-nowrap">
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                {SOCIAL.NAME}
+              </Link>
+              {"/"}
+            </li>
+          ))}
+          <li class="line-clamp-1">
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+              {SITE.EMAIL}
+            </Link>
+          </li>
         </ul>
       </section>
     </div>
