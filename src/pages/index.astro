@@ -1,11 +1,125 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import PageLayout from "@/layouts/PageLayout.astro";
+import Container from "@/components/Container.astro";
+import ArrowCard from "@/components/ArrowCard.astro";
+import Link from "@/components/Link.astro";
+import { dateRange } from "@/lib/utils";
+import { SITE, HOME } from "@/consts";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const allwork = (await getCollection("work"))
+  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+
+const work = await Promise.all(
+  allwork.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        Welcome to Samuel's Website
+      </div>
+      
+      <div class="animate space-y-4">
+        <p class="text-black/75 dark:text-white/75">
+          Hi! I'm Samuel Lin (Ming-Ying), a frontend developer with 8+ years of experience in creating modern web applications. 
+          I specialize in React, Vue.js, React Native, and building scalable user experiences.
+        </p>
+        <p class="text-black/75 dark:text-white/75">
+          I've had the enriching experience of working holiday in Australia for two years, which broadened my perspective on technology and life. 
+          I'm passionate about exploring new knowledge and experiences, finding great satisfaction in creating frontend products that deliver exceptional user experiences.
+        </p>
+        <p class="text-black/75 dark:text-white/75">
+          I maintain high standards for code quality and readability, with a focus on modular functions, efficiency, and embracing challenges. 
+          My strengths include excellent cross-team cooperation, staying current with frontend technology developments, and fostering collaborative team environments.
+        </p>
+      </div>
+
+      <!-- Latest Blog Posts -->
+      <section class="animate space-y-4">
+        <div class="flex justify-between items-center">
+          <div class="font-semibold text-black dark:text-white">
+            Latest Posts
+          </div>
+          <Link href="/blog" class="text-sm">
+            See all posts
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {blog.map((post) => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Featured Projects -->
+      <section class="animate space-y-4">
+        <div class="flex justify-between items-center">
+          <div class="font-semibold text-black dark:text-white">
+            Featured Projects
+          </div>
+          <Link href="/projects" class="text-sm">
+            See all projects
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {projects.map((project) => (
+            <li>
+              <ArrowCard entry={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="animate space-y-4">
+        <div class="flex justify-between items-center">
+          <div class="font-semibold text-black dark:text-white">
+            Work Experience
+          </div>
+          <Link href="/work" class="text-sm">
+            See all experience
+          </Link>
+        </div>
+        <ul class="flex flex-col space-y-4">
+          {work.map((entry) => (
+            <li class="grid grid-cols-[1fr,auto,1fr] gap-2 md:gap-4">
+              <div class="flex flex-col h-fit text-sm">
+                <div class="font-semibold text-black dark:text-white">
+                  {entry.data.company}
+                </div>
+                <div class="text-sm text-black/50 dark:text-white/50">
+                  {entry.data.role}
+                </div>
+              </div>
+              <div class="text-sm text-black/50 dark:text-white/50 min-w-fit text-center">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              </div>
+              <div class="text-sm">
+                {entry.data.description}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
