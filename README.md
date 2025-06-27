@@ -5,7 +5,7 @@ A modern personal website built with **Astro 5.x**, showcasing my experience as 
 ## ✨ Features
 
 - **Modern Stack**: Built with Astro 5.x, TypeScript, and Tailwind CSS
-- **Content Collections**: Organized blog posts, work experience, and projects
+- **Content Collections**: Organized blog posts, work experience
 - **Dark Mode**: Intelligent theme switching with system preference detection
 - **Responsive Design**: Mobile-first approach with seamless desktop experience
 - **SEO Optimized**: Automatic sitemap and RSS feed generation
@@ -29,7 +29,7 @@ samuel-next/
 ├── public/               # Static assets
 ├── src/
 │   ├── components/      # Reusable Astro components
-│   ├── content/        # Content collections (blog, projects, work)
+│   ├── content/        # Content collections (blog, work)
 │   ├── layouts/        # Page layouts
 │   ├── lib/           # Utility functions
 │   ├── pages/         # File-based routing
@@ -97,23 +97,6 @@ draft: false
 ---
 
 Your content here...
-```
-
-### Adding Projects
-
-Create new `.md` files in `src/content/projects/`:
-
-```markdown
----
-title: "Project Name"
-description: "Project description"
-date: 2024-01-01
-demoURL: "https://example.com"
-repoURL: "https://github.com/username/repo"
-tags: ["react", "typescript"]
----
-
-Project details...
 ```
 
 ### Adding Work Experience
