@@ -44,23 +44,26 @@ samuel-next/
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm (recommended) or npm
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/SamuelLin/samuel-next.git
 cd samuel-next
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Start the development server:
+
 ```bash
 pnpm dev
 ```
@@ -71,15 +74,15 @@ pnpm dev
 
 All commands are run from the root of the project:
 
-| Command | Action |
-|:--------|:-------|
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Start development server at `localhost:4321` |
-| `pnpm build` | Build production site to `./dist/` |
-| `pnpm preview` | Preview build locally before deploying |
-| `pnpm lint` | Run ESLint to check code quality |
-| `pnpm lint:fix` | Fix auto-fixable ESLint issues |
-| `pnpm astro check` | Run Astro's built-in type checking |
+| Command            | Action                                       |
+| :----------------- | :------------------------------------------- |
+| `pnpm install`     | Install dependencies                         |
+| `pnpm dev`         | Start development server at `localhost:4321` |
+| `pnpm build`       | Build production site to `./dist/`           |
+| `pnpm preview`     | Preview build locally before deploying       |
+| `pnpm lint`        | Run ESLint to check code quality             |
+| `pnpm lint:fix`    | Fix auto-fixable ESLint issues               |
+| `pnpm astro check` | Run Astro's built-in type checking           |
 
 ## 📝 Content Management
 
@@ -89,10 +92,10 @@ Create new `.md` files in `src/content/blog/`:
 
 ```markdown
 ---
-title: "Your Post Title"
-description: "Brief description of the post"
+title: 'Your Post Title'
+description: 'Brief description of the post'
 date: 2024-01-01
-tags: ["astro", "typescript"]
+tags: ['astro', 'typescript']
 draft: false
 ---
 
@@ -105,11 +108,11 @@ Create new `.md` files in `src/content/work/`:
 
 ```markdown
 ---
-company: "Company Name"
-role: "Job Title"
-dateStart: "2022-01-01"
-dateEnd: "2024-01-01"
-description: "Brief role description"
+company: 'Company Name'
+role: 'Job Title'
+dateStart: '2022-01-01'
+dateEnd: '2024-01-01'
+description: 'Brief role description'
 ---
 
 Detailed work experience...

@@ -1,16 +1,16 @@
 ---
-import Head from "@/components/Head.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import { SITE } from "@/consts";
-import "@/styles/global.css";
+import Head from '@/components/Head.astro'
+import Header from '@/components/Header.astro'
+import Footer from '@/components/Footer.astro'
+import { SITE } from '@/consts'
+import '@/styles/global.css'
 
 interface Props {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
@@ -24,30 +24,33 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
-    
+
     <script>
       // Animation observer for fade-in effects
       function setupAnimations() {
-        const animatedElements = document.querySelectorAll('.animate');
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('show');
-            }
-          });
-        }, {
-          threshold: 0.1
-        });
-        
-        animatedElements.forEach((el) => observer.observe(el));
+        const animatedElements = document.querySelectorAll('.animate')
+
+        const observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('show')
+              }
+            })
+          },
+          {
+            threshold: 0.1
+          }
+        )
+
+        animatedElements.forEach(el => observer.observe(el))
       }
-      
+
       // Run on page load
-      setupAnimations();
-      
+      setupAnimations()
+
       // Re-run after page navigation (for Astro view transitions)
-      document.addEventListener('astro:after-swap', setupAnimations);
+      document.addEventListener('astro:after-swap', setupAnimations)
     </script>
   </body>
 </html>

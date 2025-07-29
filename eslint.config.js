@@ -1,7 +1,7 @@
-import js from '@eslint/js';
-import astro from 'eslint-plugin-astro';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import js from '@eslint/js'
+import astro from 'eslint-plugin-astro'
+import tseslint from '@typescript-eslint/eslint-plugin'
+import tsParser from '@typescript-eslint/parser'
 
 export default [
   js.configs.recommended,
@@ -12,22 +12,25 @@ export default [
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
+        sourceType: 'module'
+      }
     },
     plugins: {
-      '@typescript-eslint': tseslint,
+      '@typescript-eslint': tseslint
     },
     rules: {
       // TypeScript rules
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' }
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
-      
+
       // General rules
       'no-console': 'warn',
       'prefer-const': 'error',
-      'no-undef': 'off', // Turn off for config files that use require
-    },
+      'no-undef': 'off' // Turn off for config files that use require
+    }
   },
   {
     ignores: [
@@ -42,7 +45,7 @@ export default [
       '.idea/',
       '.DS_Store',
       '*.tmp',
-      '*.temp',
-    ],
-  },
-];
+      '*.temp'
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 ---
-company: "WhatsMedia"
-role: "Frontend Developer"
+company: 'WhatsMedia'
+role: 'Frontend Developer'
 dateStart: 2016-03-01
 dateEnd: 2017-04-30
 ---

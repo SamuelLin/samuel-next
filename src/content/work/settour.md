@@ -1,6 +1,6 @@
 ---
-company: "Settour"
-role: "Frontend Engineer"
+company: 'Settour'
+role: 'Frontend Engineer'
 dateStart: 2017-06-01
 dateEnd: 2018-07-31
 ---

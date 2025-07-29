@@ -1,8 +1,8 @@
 ---
-title: "Hello World - 歡迎來到我的部落格"
-description: "這是我的第一篇部落格文章，介紹這個使用 Astro 5 建立的現代化個人網站。"
+title: 'Hello World - 歡迎來到我的部落格'
+description: '這是我的第一篇部落格文章，介紹這個使用 Astro 5 建立的現代化個人網站。'
 date: 2025-06-13
-tags: ["astro", "web development", "personal"]
+tags: ['astro', 'web development', 'personal']
 ---
 
 # 歡迎來到我的部落格！

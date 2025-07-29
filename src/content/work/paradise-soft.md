@@ -1,6 +1,6 @@
 ---
-company: "Paradise Soft"
-role: "Sr. Frontend Engineer"
+company: 'Paradise Soft'
+role: 'Sr. Frontend Engineer'
 dateStart: 2018-11-01
 dateEnd: 2022-06-30
 ---
