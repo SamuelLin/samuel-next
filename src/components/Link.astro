@@ -4,10 +4,16 @@ import { cn } from '@/lib/utils'
 interface Props {
   href: string
   underline?: boolean
+  external?: boolean
   class?: string
 }
 
-const { href, underline = true, class: className } = Astro.props
+const {
+  href,
+  underline = true,
+  external = false,
+  class: className
+} = Astro.props
 ---
 
 <a
@@ -19,6 +25,7 @@ const { href, underline = true, class: className } = Astro.props
     'hover:text-black dark:hover:text-white',
     className
   )}
+  {...external && { target: '_blank', rel: 'noopener noreferrer' }}
 >
   <slot />
 </a>
