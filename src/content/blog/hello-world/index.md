@@ -1,6 +1,6 @@
 ---
 title: 'Hello World - 歡迎來到我的部落格'
-description: '這是我的第一篇部落格文章，介紹這個使用 Astro 5 建立的現代化個人網站。'
+description: 'First blood!'
 date: 2025-10-04
 tags: ['astro', 'personal']
 ---
