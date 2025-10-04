@@ -20,6 +20,7 @@
     "@fontsource/inter": "^5.2.6",
     "@fontsource/lora": "^5.2.6",
     "@tailwindcss/typography": "^0.5.16",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^5.14.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.3.1",
