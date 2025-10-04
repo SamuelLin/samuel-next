@@ -43,3 +43,14 @@ const { title, description } = Astro.props
   setTheme()
   document.addEventListener('astro:after-swap', setTheme)
 </script>
+
+<!-- Google tag (gtag.js) -->
+<script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-1B9R5ZS2XN"></script>
+<script is:inline type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-1B9R5ZS2XN');
+</script>
