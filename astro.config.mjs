@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import partytown from '@astrojs/partytown'
+import { remarkReadingTime } from './remark-reading-time.mjs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +14,8 @@ export default defineConfig({
     sitemap(),
     partytown({ config: { forward: ['dataLayer.push', 'gtag'] } }),
   ],
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
   site: 'https://samuelhsnu.com'
 })
