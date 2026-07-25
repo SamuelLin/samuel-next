@@ -11,7 +11,7 @@ export const SITE: Site = {
 export const HOME: Metadata = {
   TITLE: 'Home',
   DESCRIPTION:
-    'Samuel Lin - Frontend Developer with 8+ years of experience in React, Vue.js, and React Native. Passionate about code quality, team collaboration, and creating exceptional user experiences.'
+    'Samuel Lin - Staff Frontend Engineer with 10+ years of experience in Vue.js, TypeScript, React, and React Native, building crypto-exchange trading experiences at BTSE.'
 }
 
 export const BLOG: Metadata = {
